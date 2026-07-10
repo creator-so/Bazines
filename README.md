@@ -30,7 +30,6 @@
 # 🛠 فناوری‌های استفاده‌شده
 
 - HTML5
-- CSS3
 - JavaScript
 
 ---
@@ -41,7 +40,6 @@
 Bazines/
 │
 ├── index.html
-├── style.css
 ├── script.js
 ├── assets/
 │   ├── تصاویر/
@@ -54,7 +52,7 @@ Bazines/
 
 # 👨‍💻 سازنده
 
-**سلیمان کینگ**
+**S**
 
 ---
 
