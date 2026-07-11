@@ -252,23 +252,7 @@
   @keyframes starPop{0%{transform:scale(1);} 40%{transform:scale(1.35);} 100%{transform:scale(1);}}
   .gh-star-btn.starred .gh-star-icon{animation:starPop .3s ease;}
 
-  /* ---- interactive "fork" (like) button ---- */
-  .gh-fork-btn{
-    display:inline-flex; align-items:center; gap:5px; cursor:pointer;
-    padding:3px 9px; border:1px solid #d0d7de; border-radius:6px; background:#f6f8fa;
-    color:#24292f; font-size:12px; transition:.15s all ease; user-select:none;
-  }
-  .gh-fork-btn:hover{background:#eaeef2; border-color:#8c959f;}
-  .gh-fork-btn:active{transform:scale(.94);}
-  .gh-fork-btn.forked{background:#ddf4e4; border-color:#2da44e; color:#116329;}
-  .gh-fork-btn .gh-fork-icon{font-size:13px; display:inline-block;}
-  @keyframes forkPop{
-    0%{transform:scale(1) rotate(0deg);}
-    45%{transform:scale(1.45) rotate(-18deg);}
-    75%{transform:scale(.9) rotate(8deg);}
-    100%{transform:scale(1) rotate(0deg);}
-  }
-  .gh-fork-btn.forked .gh-fork-icon{animation:forkPop .45s ease;}
+
 
   .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:16px 0;}
   .stat-box{background:var(--panel-2); border:1px solid var(--line); border-radius:10px; padding:14px 8px; text-align:center;}
@@ -555,9 +539,8 @@
         </div>
         <div class="gh-repo-desc">تنها یا با دوستان روی همین گوشی — یک نفر بین شما مافیاست.</div>
         <div class="gh-repo-meta">
-          <span><i class="gh-lang-dot" style="background:#f1e05a;"></i>جاوااسکریپت</span>
-          <span class="gh-star-btn" data-star="mafia"><i class="gh-star-icon">☆</i><span class="gh-star-count">۰</span></span>
-          <span class="gh-fork-btn" data-fork="mafia"><i class="gh-fork-icon">🍴</i><span class="gh-fork-count">۰</span></span>
+          <span><i class="gh-lang-dot" style="background:#f1e05a;"></i>S</span>
+          <span class="gh-star-btn" data-star="mafia"><i class="gh-star-icon">☆</i><span class="gh-star-count">۱</span></span>
         </div>
       </div>
 
@@ -569,9 +552,8 @@
         </div>
         <div class="gh-repo-desc" id="quiz-best-desc">کاپ و سطح بگیر</div>
         <div class="gh-repo-meta">
-          <span><i class="gh-lang-dot" style="background:#3572A5;"></i>پایتون</span>
-          <span class="gh-star-btn" data-star="quiz"><i class="gh-star-icon">☆</i><span class="gh-star-count">۰</span></span>
-          <span class="gh-fork-btn" data-fork="quiz"><i class="gh-fork-icon">🍴</i><span class="gh-fork-count">۰</span></span>
+          <span><i class="gh-lang-dot" style="background:#3572A5;"></i>S</span>
+          <span class="gh-star-btn" data-star="quiz"><i class="gh-star-icon">☆</i><span class="gh-star-count">۱</span></span>
         </div>
       </div>
 
@@ -583,9 +565,8 @@
         </div>
         <div class="gh-repo-desc">با ربات، ۳ سطح سختی — کیش‌ومات کن و کاپ بگیر.</div>
         <div class="gh-repo-meta">
-          <span><i class="gh-lang-dot" style="background:#f34b7d;"></i>سی‌پلاس‌پلاس</span>
-          <span class="gh-star-btn" data-star="chess"><i class="gh-star-icon">☆</i><span class="gh-star-count">۰</span></span>
-          <span class="gh-fork-btn" data-fork="chess"><i class="gh-fork-icon">🍴</i><span class="gh-fork-count">۰</span></span>
+          <span><i class="gh-lang-dot" style="background:#f34b7d;"></i>S</span>
+          <span class="gh-star-btn" data-star="chess"><i class="gh-star-icon">☆</i><span class="gh-star-count">۱</span></span>
         </div>
       </div>
     </div>
@@ -801,8 +782,7 @@
   <div class="card" style="text-align:center; margin-bottom:16px;">
     <h2 class="section-title" style="justify-content:center;">درباره‌ی برنامه</h2>
     <p class="display" style="font-size:19px; margin:8px 0 0;">
-      نسخه‌ی <span style="color:var(--gold); text-shadow:0 0 12px rgba(201,162,75,.4);">۱.۰.۵</span>
-      توسط <span style="color:var(--red); text-shadow:0 0 12px rgba(179,23,44,.4);">S</span>
+      <span style="color:var(--gold); text-shadow:0 0 12px rgba(201,162,75,.4);">S STUDIO</span>
     </p>
   </div>
 
@@ -810,14 +790,13 @@
     <h2 class="section-title">بروزرسانی‌ها</h2>
     <div style="font-size:13px; line-height:2;">
       <div class="pill" style="display:block; text-align:right; margin-bottom:8px; background:var(--panel-2);">
-        نسخه‌ی ۱.۰.۵ — <span style="color:var(--gold);">۱۹ تیر ۱۴۰۵</span>
+        نسخه‌ی ۱.۰.۹ — <span style="color:var(--gold);">2026/7/12</span>
       </div>
       <ul style="margin:0; padding-inline-start:18px;">
-        <li>بازی جدید: شطرنج با ربات، در ۳ سطح سختی و امکان انتخاب رنگ مهره‌ها — کیش‌ومات کن و کاپ بگیر. ♟️</li>
-        <li>بازی مافیای محلی و چندنفره روی همین گوشی، با نقش‌های مافیا، کارآگاه، دکتر و شهروند عادی.</li>
-        <li>کوییز عمومی با ۱۰۰ مرحله‌ی چهارجوابی؛ پیشرفتت ذخیره می‌مونه و هر بار از همون مرحله ادامه می‌دی، نه از اول.</li>
-        <li>سیستم کاپ، امتیاز تجربه، رتبه‌بندی و آواتار/قاب‌های قابل باز شدن.</li>
-        <li>ارتباط مستقیم با سازنده از طریق تلگرام، اینستاگرام و واتساپ.</li>
+        <li>کوییز عمومی حالا ۲۰۰ مرحله داره (قبلاً ۱۰۰ مرحله بود).</li>
+        <li>بعد از تکمیل همه‌ی مراحل کوییز، بازی دیگه خودکار از اول شروع نمی‌شه و فقط پیام «همه مرحله‌ها رو تموم کردین» نشون داده می‌شه.</li>
+        <li>دکمه‌ی لایک (ستاره) بازی‌ها حالا ذخیره می‌شه؛ با خروج و ورود دوباره یا بستن برنامه صفر نمی‌شه.</li>
+        <li>دکمه‌ی فورک (چنگال) از کارت بازی‌ها حذف شد.</li>
       </ul>
     </div>
   </div>
@@ -1287,7 +1266,7 @@ let profile = {
   name: "",
   avatar: "🕵️",
   frame: "basic",
-  stats: { games:0, wins:0, losses:0, xp:0, trophies:0, maxTrophies:0, quizBest:0, quizStage:0 },
+  stats: { games:0, wins:0, losses:0, xp:0, trophies:0, maxTrophies:0, quizBest:0, quizStage:0, starredGames:{mafia:false,quiz:false,chess:false} },
   history: []
 };
 let selectedAuthAvatar = AVATARS[0];
@@ -1440,7 +1419,7 @@ $("#btn-enter").addEventListener("click", ()=>{
     profile.name = name;
     profile.avatar = selectedAuthAvatar;
     profile.frame = "basic";
-    profile.stats = { games:0, wins:0, losses:0, xp:0, trophies:0, maxTrophies:0, quizBest:0, quizStage:0 };
+    profile.stats = { games:0, wins:0, losses:0, xp:0, trophies:0, maxTrophies:0, quizBest:0, quizStage:0, starredGames:{mafia:false,quiz:false,chess:false} };
     profile.history = [];
     saveAccount();
   }
@@ -1451,7 +1430,7 @@ $("#btn-enter").addEventListener("click", ()=>{
 $("#btn-logout").addEventListener("click", ()=>{
   saveAccount();
   setCurrentUser(null);
-  profile = { name:"", avatar: AVATARS[0], frame:"basic", stats:{games:0,wins:0,losses:0,xp:0,trophies:0,maxTrophies:0,quizBest:0,quizStage:0}, history:[] };
+  profile = { name:"", avatar: AVATARS[0], frame:"basic", stats:{games:0,wins:0,losses:0,xp:0,trophies:0,maxTrophies:0,quizBest:0,quizStage:0,starredGames:{mafia:false,quiz:false,chess:false}}, history:[] };
   lobbyFriends = [];
   $("#input-name").value = "";
   $("#auth-msg").textContent = "";
@@ -2174,7 +2153,9 @@ function renderGamesHub(){
   const total = QUIZ_QUESTIONS.length;
   const best = profile.stats.quizBest || 0;
   const stage = profile.stats.quizStage || 0;
-  if(stage > 0){
+  if(stage >= total){
+    $("#quiz-best-desc").textContent = `همه‌ی ${toFa(total)} مرحله تموم شده — بهترین: ${toFa(best)}`;
+  } else if(stage > 0){
     $("#quiz-best-desc").textContent = `ادامه از مرحله ${toFa(stage+1)} از ${toFa(total)} — بهترین: ${toFa(best)}`;
   } else if(best > 0){
     $("#quiz-best-desc").textContent = `بهترین رکورد: مرحله ${toFa(best)} از ${toFa(total)}`;
@@ -2182,22 +2163,25 @@ function renderGamesHub(){
     $("#quiz-best-desc").textContent = `${toFa(total)} مرحله — کاپ و سطح بگیر`;
   }
   renderGhStars();
-  renderGhForks();
 }
 
 /* ---- GitHub-style "star" (like) buttons on the game repo cards ---- */
-const GH_STAR_BASE = { mafia:0, quiz:0, chess:0 };
-const ghStarred = { mafia:false, quiz:false, chess:false };
+const GH_STAR_BASE = { mafia:1, quiz:1, chess:1 };
 function faDigits(str){ return String(str).replace(/[0-9]/g, d=>"۰۱۲۳۴۵۶۷۸۹"[d]); }
 function formatStarCount(n){
   const s = n>=1000 ? (n/1000).toFixed(1).replace(/\.0$/,"") + "k" : String(n);
   return faDigits(s);
 }
+function getGhStarred(){
+  if(!profile.stats.starredGames) profile.stats.starredGames = { mafia:false, quiz:false, chess:false };
+  return profile.stats.starredGames;
+}
 function renderGhStars(){
+  const ghStarred = getGhStarred();
   Object.keys(GH_STAR_BASE).forEach(key=>{
     const btn = document.querySelector(`.gh-star-btn[data-star="${key}"]`);
     if(!btn) return;
-    const starred = ghStarred[key];
+    const starred = !!ghStarred[key];
     const count = GH_STAR_BASE[key] + (starred ? 1 : 0);
     btn.classList.toggle("starred", starred);
     btn.querySelector(".gh-star-icon").textContent = starred ? "★" : "☆";
@@ -2209,38 +2193,16 @@ $all(".gh-star-btn").forEach(btn=>{
     e.preventDefault();
     e.stopPropagation();
     const key = btn.dataset.star;
+    const ghStarred = getGhStarred();
     ghStarred[key] = !ghStarred[key];
+    saveAccount();
     renderGhStars();
   });
 });
 renderGhStars();
 
-/* ---- GitHub-style "fork" (like) buttons on the game repo cards ---- */
-const GH_FORK_BASE = { mafia:0, quiz:0, chess:0 };
-const ghForked = { mafia:false, quiz:false, chess:false };
-function renderGhForks(){
-  Object.keys(GH_FORK_BASE).forEach(key=>{
-    const btn = document.querySelector(`.gh-fork-btn[data-fork="${key}"]`);
-    if(!btn) return;
-    const forked = ghForked[key];
-    const count = GH_FORK_BASE[key] + (forked ? 1 : 0);
-    btn.classList.toggle("forked", forked);
-    btn.querySelector(".gh-fork-count").textContent = formatStarCount(count);
-  });
-}
-$all(".gh-fork-btn").forEach(btn=>{
-  btn.addEventListener("click", (e)=>{
-    e.preventDefault();
-    e.stopPropagation();
-    const key = btn.dataset.fork;
-    ghForked[key] = !ghForked[key];
-    renderGhForks();
-  });
-});
-renderGhForks();
-
 /* ============================================================
-   QUIZ GAME — کوییز چهارجوابی (۱۰۰ مرحله)
+   QUIZ GAME — کوییز چهارجوابی (۲۰۰ مرحله)
 ============================================================ */
 const QUIZ_QUESTIONS = [
   {type:"mc", q:"پایتخت ایران کدام است؟", options:["تهران","اصفهان","شیراز","تبریز"], a:0},
@@ -2342,7 +2304,107 @@ const QUIZ_QUESTIONS = [
   {type:"mc", q:"المپیک باستان اولین‌بار در کدام کشور برگزار شد؟", options:["ایتالیا","یونان","مصر","ترکیه"], a:1},
   {type:"mc", q:"کدام‌یک شورترین دریا/دریاچه‌ی جهان است؟", options:["دریای خزر","دریای سرخ","دریای مرده","دریای مدیترانه"], a:2},
   {type:"mc", q:"کدام کشور بیشترین تعداد آتشفشان فعال را دارد؟", options:["ژاپن","اندونزی","ایسلند","آمریکا"], a:1},
-  {type:"mc", q:"طولانی‌ترین عمر ثبت‌شده‌ی یک انسان تاکنون حدوداً چند سال بوده؟", options:["۹۰ سال","۱۰۵ سال","۱۲۲ سال","۱۵۰ سال"], a:2}
+  {type:"mc", q:"طولانی‌ترین عمر ثبت‌شده‌ی یک انسان تاکنون حدوداً چند سال بوده؟", options:["۹۰ سال","۱۰۵ سال","۱۲۲ سال","۱۵۰ سال"], a:2},
+  {type:"mc", q:"پایتخت ایتالیا کدام است؟", options:["میلان","رم","ونیز","فلورانس"], a:1},
+  {type:"mc", q:"پایتخت اسپانیا کدام است؟", options:["بارسلونا","مادرید","سویا","والنسیا"], a:1},
+  {type:"mc", q:"پایتخت روسیه کدام است؟", options:["مسکو","سن‌پترزبورگ","کیف","مینسک"], a:0},
+  {type:"mc", q:"پایتخت چین کدام است؟", options:["شانگهای","پکن","هنگ‌کنگ","گوانگژو"], a:1},
+  {type:"mc", q:"پایتخت کانادا کدام است؟", options:["تورنتو","ونکوور","اتاوا","مونترال"], a:2},
+  {type:"mc", q:"پایتخت استرالیا کدام است؟", options:["سیدنی","ملبورن","کانبرا","پرت"], a:2},
+  {type:"mc", q:"پایتخت ترکیه کدام است؟", options:["استانبول","آنکارا","ازمیر","بورسا"], a:1},
+  {type:"mc", q:"پایتخت یونان کدام است؟", options:["آتن","تسالونیکی","اسپارت","پاتراس"], a:0},
+  {type:"mc", q:"پایتخت عراق کدام است؟", options:["بصره","بغداد","موصل","اربیل"], a:1},
+  {type:"mc", q:"پایتخت هند کدام است؟", options:["مومبای","دهلی‌نو","بمبئی","کلکته"], a:1},
+  {type:"mc", q:"کدام کشور بیشترین جزیره را در جهان دارد؟", options:["سوئد","ژاپن","اندونزی","نروژ"], a:0},
+  {type:"mc", q:"کوچک‌ترین کشور جهان از نظر مساحت کدام است؟", options:["موناکو","سان‌مارینو","واتیکان","لیختن‌اشتاین"], a:2},
+  {type:"mc", q:"کدام رودخانه از میان مصر می‌گذرد؟", options:["نیل","دجله","فرات","آمازون"], a:0},
+  {type:"mc", q:"دیوار چین اصلی برای چه هدفی ساخته شد؟", options:["جلوگیری از سیل","دفاع در برابر حمله","کنترل تجارت","تفریح"], a:1},
+  {type:"mc", q:"بزرگ‌ترین دریاچه‌ی جهان از نظر مساحت کدام است؟", options:["دریاچه‌ی سوپریور","دریای خزر","دریاچه‌ی ویکتوریا","دریاچه‌ی بایکال"], a:1},
+  {type:"mc", q:"عمیق‌ترین دریاچه‌ی جهان کدام است؟", options:["دریاچه‌ی بایکال","دریاچه‌ی تانگانیکا","دریاچه‌ی ویکتوریا","دریاچه‌ی سوپریور"], a:0},
+  {type:"mc", q:"کدام کوهستان مرز طبیعی اروپا و آسیا محسوب می‌شود؟", options:["آلپ","اورال","هیمالیا","آند"], a:1},
+  {type:"mc", q:"بزرگ‌ترین جزیره‌ی جهان کدام است؟", options:["گرینلند","استرالیا","ماداگاسکار","بورنئو"], a:0},
+  {type:"mc", q:"کدام‌یک از این‌ها یک کشور محصور در خشکی نیست؟", options:["سوئیس","اتریش","پرتغال","مغولستان"], a:2},
+  {type:"mc", q:"شهر ونیز ایتالیا با چه چیزی معروف است؟", options:["کوهستان","کانال‌های آبی","بیابان","جنگل"], a:1},
+  {type:"mc", q:"جنگ جهانی دوم در کدام سال به پایان رسید؟", options:["۱۹۴۳","۱۹۴۴","۱۹۴۵","۱۹۴۶"], a:2},
+  {type:"mc", q:"جنگ جهانی اول در چه سالی آغاز شد؟", options:["۱۹۱۲","۱۹۱۴","۱۹۱۶","۱۹۱۸"], a:1},
+  {type:"mc", q:"دیوار برلین در چه سالی فروریخت؟", options:["۱۹۸۷","۱۹۸۹","۱۹۹۱","۱۹۹۳"], a:1},
+  {type:"mc", q:"اهرام بزرگ جیزه متعلق به کدام تمدن است؟", options:["روم باستان","مصر باستان","یونان باستان","بین‌النهرین"], a:1},
+  {type:"mc", q:"امپراتوری روم باستان مرکزیتش در کدام شهر بود؟", options:["آتن","رم","استانبول","قاهره"], a:1},
+  {type:"mc", q:"جاده‌ی ابریشم عمدتاً برای چه چیزی استفاده می‌شد؟", options:["مهاجرت نظامی","تجارت بین شرق و غرب","سفرهای زیارتی","انتقال آب"], a:1},
+  {type:"mc", q:"کدام تمدن باستانی سازنده‌ی زیگورات‌ها بود؟", options:["مصری","بین‌النهرینی","یونانی","رومی"], a:1},
+  {type:"mc", q:"انقلاب صنعتی ابتدا در کدام کشور آغاز شد؟", options:["فرانسه","آلمان","انگلستان","آمریکا"], a:2},
+  {type:"mc", q:"کاشف قاره‌ی آمریکا (از دید تاریخ رسمی اروپا) که بود؟", options:["ماژلان","کریستف کلمب","واسکو داگاما","کاپیتان کوک"], a:1},
+  {type:"mc", q:"نویسنده‌ی رمان «جنگ و صلح» کیست؟", options:["داستایوفسکی","تولستوی","چخوف","پوشکین"], a:1},
+  {type:"mc", q:"شاهنامه اثر کدام شاعر ایرانی است؟", options:["حافظ","سعدی","فردوسی","مولوی"], a:2},
+  {type:"mc", q:"دیوان حافظ بیشتر شامل چه نوع شعری است؟", options:["مثنوی","غزل","قصیده","رباعی"], a:1},
+  {type:"mc", q:"رمان «هری پاتر» نوشته‌ی کیست؟", options:["جی.کی. رولینگ","جورج آر.آر. مارتین","استیون کینگ","سوزان کالینز"], a:0},
+  {type:"mc", q:"نقاشی «مونالیزا» اثر کیست؟", options:["مایکل‌آنژ","لئوناردو داوینچی","پیکاسو","ون‌گوگ"], a:1},
+  {type:"mc", q:"سقف کلیسای سیستین توسط چه کسی نقاشی شد؟", options:["داوینچی","رافائل","مایکل‌آنژ","بوتیچلی"], a:2},
+  {type:"mc", q:"آهنگساز اثر معروف «سمفونی نهم» چه کسی است؟", options:["موتزارت","باخ","بتهوون","شوپن"], a:2},
+  {type:"mc", q:"مخترع تلفن چه کسی شناخته می‌شود؟", options:["توماس ادیسون","الکساندر گراهام بل","نیکولا تسلا","بنجامین فرانکلین"], a:1},
+  {type:"mc", q:"مخترع لامپ برق (که رایج‌تر شناخته می‌شود) که بود؟", options:["توماس ادیسون","نیکولا تسلا","جیمز وات","مایکل فارادی"], a:0},
+  {type:"mc", q:"نظریه‌ی نسبیت را چه کسی مطرح کرد؟", options:["نیوتن","انیشتین","گالیله","هاوکینگ"], a:1},
+  {type:"mc", q:"نظریه‌ی جاذبه‌ی زمین (سیب) را چه کسی مطرح کرد؟", options:["انیشتین","نیوتن","کپلر","گالیله"], a:1},
+  {type:"mc", q:"واحد اندازه‌گیری نیرو در فیزیک چه نام دارد؟", options:["ژول","نیوتن","وات","پاسکال"], a:1},
+  {type:"mc", q:"واحد اندازه‌گیری توان الکتریکی چیست؟", options:["ولت","آمپر","وات","اهم"], a:2},
+  {type:"mc", q:"سرعت نور در خلأ تقریباً چند کیلومتر بر ثانیه است؟", options:["۳۰۰","۳۰۰۰","۳۰۰,۰۰۰","۳,۰۰۰,۰۰۰"], a:2},
+  {type:"mc", q:"کدام سیاره‌ی منظومه‌ی شمسی حلقه‌های معروف دارد؟", options:["مشتری","زحل","اورانوس","نپتون"], a:1},
+  {type:"mc", q:"بزرگ‌ترین سیاره‌ی منظومه‌ی شمسی کدام است؟", options:["زحل","مشتری","نپتون","زمین"], a:1},
+  {type:"mc", q:"کوچک‌ترین سیاره‌ی منظومه‌ی شمسی کدام است؟", options:["مریخ","زهره","عطارد","زمین"], a:2},
+  {type:"mc", q:"کهکشان راه شیری چه نوع کهکشانی است؟", options:["بیضوی","مارپیچی","نامنظم","کروی"], a:1},
+  {type:"mc", q:"نزدیک‌ترین ستاره به زمین (بعد از خورشید) کدام است؟", options:["سیریوس","پروکسیما قنطورس","بتلگز","وگا"], a:1},
+  {type:"mc", q:"DNA مخفف چه عبارتی است؟", options:["دی‌اکسی‌ریبونوکلئیک اسید","دی‌اکسی نیتروژن اسید","دو نوکلئوتید اسید","دیانوکلئیک اسید"], a:0},
+  {type:"mc", q:"بزرگ‌ترین اندام داخلی بدن انسان کدام است؟", options:["ریه","کبد","معده","کلیه"], a:1},
+  {type:"mc", q:"بدن انسان از چند نوع گروه خونی اصلی تشکیل شده؟", options:["دو","سه","چهار","پنج"], a:2},
+  {type:"mc", q:"کدام اندام بدن مسئول تصفیه‌ی خون است؟", options:["کبد و کلیه","قلب","ریه","معده"], a:0},
+  {type:"mc", q:"بلندترین استخوان بدن انسان کدام است؟", options:["استخوان بازو","استخوان ران","ستون فقرات","استخوان ساق"], a:1},
+  {type:"mc", q:"کدام حیوان بزرگ‌ترین تخم را در میان جانوران زمینی می‌گذارد؟", options:["تمساح","شترمرغ","لاک‌پشت","اژدهای کومودو"], a:1},
+  {type:"mc", q:"کدام‌یک از این حیوانات پستاندار دریایی است؟", options:["کوسه","نهنگ","ماهی تن","اختاپوس"], a:1},
+  {type:"mc", q:"سریع‌ترین پرنده‌ی جهان در شیرجه کدام است؟", options:["عقاب طلایی","شاهین دره‌ای","کرکس","جغد"], a:1},
+  {type:"mc", q:"کدام حیوان می‌تواند رنگ پوست خود را تغییر دهد؟", options:["مارمولک","آفتاب‌پرست","سوسمار","مار"], a:1},
+  {type:"mc", q:"زرافه‌ها بیشتر عمرشان را چگونه می‌گذرانند؟", options:["نشسته","ایستاده","شناور","خوابیده"], a:1},
+  {type:"mc", q:"طولانی‌ترین دوره‌ی بارداری در میان پستانداران معمولاً متعلق به کدام حیوان است؟", options:["فیل","نهنگ","زرافه","اسب"], a:0},
+  {type:"mc", q:"کدام حشره مسئول تولید عسل است؟", options:["مورچه","زنبورعسل","پروانه","سوسک"], a:1},
+  {type:"mc", q:"مارها چگونه محیط اطراف را حس می‌کنند؟", options:["با گوش","با زبان و بویایی","با چشم فقط","با پوست فقط"], a:1},
+  {type:"mc", q:"بزرگ‌ترین ماهی زنده‌ی جهان کدام است؟", options:["کوسه‌ی سفید","کوسه‌ی نهنگی","ماهی تن","اره‌ماهی"], a:1},
+  {type:"mc", q:"واحد پول آمریکا چه نام دارد؟", options:["پوند","دلار","یورو","ین"], a:1},
+  {type:"mc", q:"واحد پول انگلستان چه نام دارد؟", options:["دلار","یورو","پوند","فرانک"], a:2},
+  {type:"mc", q:"واحد پول رسمی اکثر کشورهای اتحادیه‌ی اروپا چه نام دارد؟", options:["دلار اروپایی","یورو","پوند اروپایی","فرانک"], a:1},
+  {type:"mc", q:"زبان رسمی چین کدام است؟", options:["ژاپنی","ماندارین چینی","کره‌ای","کانتونی"], a:1},
+  {type:"mc", q:"زبان رسمی روسیه کدام است؟", options:["روسی","اوکراینی","لهستانی","بلاروسی"], a:0},
+  {type:"mc", q:"پرجمعیت‌ترین شهر جهان (طبق کلان‌شهرها) کدام‌یک است؟", options:["نیویورک","توکیو","لندن","پاریس"], a:1},
+  {type:"mc", q:"المپیک زمستانی معمولاً هر چند سال یک‌بار برگزار می‌شود؟", options:["هر ۲ سال","هر ۳ سال","هر ۴ سال","هر ۵ سال"], a:2},
+  {type:"mc", q:"در بسکتبال، هر تیم چند بازیکن در زمین دارد؟", options:["چهار","پنج","شش","هفت"], a:1},
+  {type:"mc", q:"در والیبال، هر تیم چند بازیکن در زمین دارد؟", options:["پنج","شش","هفت","هشت"], a:1},
+  {type:"mc", q:"مسابقات تنیس گرندسلم شامل چند تورنمنت اصلی است؟", options:["دو","سه","چهار","پنج"], a:2},
+  {type:"mc", q:"در فوتبال، کارت قرمز به چه معناست؟", options:["اخطار","اخراج بازیکن","پنالتی","گل"], a:1},
+  {type:"mc", q:"دوی ماراتن استاندارد چند کیلومتر است؟", options:["۲۱ کیلومتر","۳۲ کیلومتر","۴۲ کیلومتر","۵۰ کیلومتر"], a:2},
+  {type:"mc", q:"در شنا، کدام سبک معمولاً سریع‌ترین شناخته می‌شود؟", options:["قورباغه","پروانه","کرال سینه (آزاد)","پشت"], a:2},
+  {type:"mc", q:"محبوب‌ترین ورزش جهان از نظر تعداد هواداران کدام است؟", options:["بسکتبال","فوتبال","کریکت","تنیس"], a:1},
+  {type:"mc", q:"رنگ‌های حلقه‌های المپیک نماد چه چیزی هستند؟", options:["پنج فصل سال","پنج قاره‌ی جهان","پنج کشور بنیان‌گذار","پنج رشته‌ی ورزشی"], a:1},
+  {type:"mc", q:"موبایل هوشمند اولین‌بار توسط کدام شرکت به‌طور گسترده محبوب شد (آیفون)؟", options:["سامسونگ","اپل","نوکیا","گوگل"], a:1},
+  {type:"mc", q:"اینترنت در ابتدا برای چه هدفی توسعه یافت؟", options:["تجارت الکترونیک","ارتباطات نظامی و پژوهشی","بازی آنلاین","شبکه‌های اجتماعی"], a:1},
+  {type:"mc", q:"موتور جستجوی پرکاربردترین جهان کدام است؟", options:["یاهو","بینگ","گوگل","داک‌داک‌گو"], a:2},
+  {type:"mc", q:"HTML مخفف چه عبارتی است؟", options:["هایپرتکست مارک‌آپ لنگویج","های‌تک مدرن لنگویج","هوم تول مارک لنگویج","هایپر تول مدیا لنگویج"], a:0},
+  {type:"mc", q:"واحد اندازه‌گیری حافظه‌ی کامپیوتر معمولاً چیست؟", options:["وات","بایت","هرتز","ولت"], a:1},
+  {type:"mc", q:"اولین شبکه‌ی اجتماعی که به‌طور گسترده محبوب شد کدام‌یک است؟", options:["فیس‌بوک","اینستاگرام","تلگرام","توییتر"], a:0},
+  {type:"mc", q:"کدام شرکت سازنده‌ی سیستم‌عامل ویندوز است؟", options:["اپل","گوگل","مایکروسافت","آی‌بی‌ام"], a:2},
+  {type:"mc", q:"رباتی که برای اولین‌بار به فضا فرستاده شد، حامل چه موجودی بود؟", options:["سگ","میمون","انسان","موش"], a:0},
+  {type:"mc", q:"نخستین ایستگاه فضایی جهان چه نام داشت؟", options:["میر","سالیوت ۱","اسکای‌لب","ایستگاه فضایی بین‌المللی"], a:1},
+  {type:"mc", q:"غذای اصلی و سنتی ژاپن کدام است؟", options:["پاستا","سوشی","پیتزا","کاری"], a:1},
+  {type:"mc", q:"پیتزا از کدام کشور سرچشمه گرفته است؟", options:["فرانسه","اسپانیا","ایتالیا","یونان"], a:2},
+  {type:"mc", q:"قهوه در اصل از کدام قاره سرچشمه گرفته است؟", options:["آسیا","آفریقا","اروپا","آمریکای جنوبی"], a:1},
+  {type:"mc", q:"چای بیشتر در کدام کشورها به‌عنوان نوشیدنی سنتی شناخته می‌شود؟", options:["ایران و چین","برزیل و آرژانتین","کانادا و آمریکا","استرالیا و نیوزیلند"], a:0},
+  {type:"mc", q:"شکلات از کدام گیاه تهیه می‌شود؟", options:["نیشکر","کاکائو","قهوه","چای"], a:1},
+  {type:"mc", q:"برنج غذای اصلی کدام قاره محسوب می‌شود؟", options:["اروپا","آسیا","آمریکای شمالی","اقیانوسیه"], a:1},
+  {type:"mc", q:"دورترین سیاره‌ی شناخته‌شده از خورشید در منظومه‌ی شمسی کدام است؟", options:["اورانوس","نپتون","پلوتون","زحل"], a:1},
+  {type:"mc", q:"پرچم ایران از چند رنگ اصلی تشکیل شده؟", options:["دو","سه","چهار","پنج"], a:1},
+  {type:"mc", q:"مجسمه‌ی آزادی هدیه‌ی کدام کشور به آمریکا بود؟", options:["انگلستان","فرانسه","اسپانیا","آلمان"], a:1},
+  {type:"mc", q:"برج خلیفه در کدام شهر واقع شده؟", options:["ابوظبی","دوحه","دبی","ریاض"], a:2},
+  {type:"mc", q:"تاج محل در کدام کشور واقع شده؟", options:["پاکستان","هند","بنگلادش","ایران"], a:1},
+  {type:"mc", q:"کولوسئوم روم برای چه هدفی ساخته شده بود؟", options:["عبادت","نمایش‌های گلادیاتوری و تفریحی","اقامت شاهان","بازار"], a:1},
+  {type:"mc", q:"استون‌هنج در کدام کشور واقع شده؟", options:["ایرلند","اسکاتلند","انگلستان","ولز"], a:2},
+  {type:"mc", q:"بزرگ‌ترین صحرای سرد جهان کدام است؟", options:["صحرای گبی","جنوبگان (قطب جنوب)","صحرای آتاکاما","صحرای کالاهاری"], a:1}
 ];
 
 let quizState = null;
@@ -2351,8 +2413,14 @@ let quizState = null;
 // مگر اینکه همه‌ی مراحل تموم شده باشه یا کاربر خودش بخواد از اول شروع کنه).
 function startQuiz(){
   const total = QUIZ_QUESTIONS.length;
-  let startIdx = profile.stats.quizStage || 0;
-  if(startIdx >= total) startIdx = 0;
+  const startIdx = profile.stats.quizStage || 0;
+  if(startIdx >= total){
+    // همه‌ی مراحل قبلاً تموم شده — دیگه هیچ‌وقت از اول شروع نمی‌شه
+    quizState = { idx: total, correct: startIdx };
+    goScreen("quiz");
+    finishQuiz(true);
+    return;
+  }
   quizState = { idx: startIdx, correct: startIdx };
   goScreen("quiz");
   renderQuizQuestion();
@@ -2442,22 +2510,36 @@ function answerQuiz(userAnswer){
 }
 
 function finishQuiz(completedAll){
+  const total = QUIZ_QUESTIONS.length;
   profile.stats.quizBest = Math.max(profile.stats.quizBest||0, quizState.correct);
-  if(completedAll) profile.stats.quizStage = 0; // بعد از تکمیل همه‌ی مراحل، دور بعدی از اول شروع می‌شه
+  if(completedAll) profile.stats.quizStage = total; // تکمیل‌شده می‌مونه — هیچ‌وقت خودکار از اول شروع نمی‌شه
   saveAccount();
 
-  const total = QUIZ_QUESTIONS.length;
   const body = $("#quiz-body");
-  const continueLabel = completedAll ? "🔁 دوباره از اول" : "▶️ ادامه از همین مرحله";
+
+  if(completedAll){
+    body.innerHTML = `
+      <div style="font-size:48px; margin-bottom:6px;">🏆</div>
+      <div class="display" style="font-size:26px; color:var(--gold);">همه مرحله‌ها رو تموم کردین</div>
+      <div class="row center" style="margin-top:18px; gap:10px;">
+        <button class="btn" id="quiz-exit-btn">🏠 بازی‌ها</button>
+      </div>
+    `;
+    $("#quiz-progress-fill").style.width = "100%";
+    $("#quiz-stage-pill").textContent = "تکمیل شد";
+    document.getElementById("quiz-exit-btn").addEventListener("click", ()=>{ renderGamesHub(); goScreen("games"); });
+    return;
+  }
+
   body.innerHTML = `
-    <div style="font-size:48px; margin-bottom:6px;">${completedAll ? "🏆" : "🧠"}</div>
-    <div class="display" style="font-size:26px; color:var(--gold);">${completedAll ? "همه‌ی مراحل تموم شد!" : "بازی تموم شد"}</div>
+    <div style="font-size:48px; margin-bottom:6px;">🧠</div>
+    <div class="display" style="font-size:26px; color:var(--gold);">بازی تموم شد</div>
     <p class="muted" style="margin-top:6px;">${toFa(quizState.correct)} از ${toFa(total)} مرحله رو درست جواب دادی.</p>
     <div class="row center" style="margin-top:18px; gap:10px;">
-      <button class="btn btn-primary" id="quiz-retry-btn">${continueLabel}</button>
+      <button class="btn btn-primary" id="quiz-retry-btn">▶️ ادامه از همین مرحله</button>
       <button class="btn" id="quiz-exit-btn">🏠 بازی‌ها</button>
     </div>
-    ${completedAll ? "" : `<div style="margin-top:10px;"><button class="btn btn-ghost btn-sm" id="quiz-reset-btn">🔄 شروع کامل از مرحله ۱</button></div>`}
+    <div style="margin-top:10px;"><button class="btn btn-ghost btn-sm" id="quiz-reset-btn">🔄 شروع کامل از مرحله ۱</button></div>
   `;
   $("#quiz-progress-fill").style.width = "100%";
   $("#quiz-stage-pill").textContent = `نتیجه: ${toFa(quizState.correct)} / ${toFa(total)}`;
