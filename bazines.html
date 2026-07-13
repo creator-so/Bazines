@@ -982,11 +982,11 @@
     <h2 class="section-title">بروزرسانی‌ها</h2>
     <div style="font-size:13px; line-height:2;">
       <div class="pill" style="display:block; text-align:right; margin-bottom:8px; background:var(--panel-2);">
-        نسخه‌ی ۱.۱.۰ — <span style="color:var(--gold);">2026/7/13</span>
+        نسخه‌ی 1.1.2 — <span style="color:var(--gold);">1405/04/22</span> <span class="muted" style="font-size:11px;">(2026/7/13)</span>
       </div>
       <ul style="margin:0; padding-inline-start:18px; margin-bottom:14px;">
-        <li>بازی جدید «coin-clicker» 🐹 به بخش بازی‌ها اضافه شد: ضربه بزن، سکه جمع کن، ارتقا بخر، پاداش روزانه بگیر، مأموریت و دستاورد کامل کن و توی لیگ‌ها بالا برو.</li>
-        <li>حالت تاریک 🌙 اضافه شد — از صفحه اصلی، کنار دکمه‌ی خروج قابل تغییره.</li>
+        <li>🐞 باگ بازی همستر رفع شد: سطح و لیگ بازیکن قبلاً بر اساس موجودی فعلی سکه محاسبه می‌شد و با هر خرید ارتقا از فروشگاه پایین می‌اومد؛ حالا سطح بر اساس مجموع سکه‌های به‌دست‌آمده محاسبه می‌شه و دیگه هیچ‌وقت کاهش پیدا نمی‌کنه. شماره‌ی روز در نوار پاداش روزانه هم درست شد.</li>
+        <li>🐞 باگ دیگه‌ای در بازی همستر رفع شد: شارژ انرژی و درآمد ساعتی هر ۳ ثانیه یک مقدار ثابت حساب می‌شد نه بر اساس زمان واقعی سپری‌شده؛ اگه تب پس‌زمینه/گوشی خواب می‌رفت، انرژی و موجودی سکه کمتر از حد واقعی افزایش پیدا می‌کرد. حالا هر دو بر اساس زمان واقعی گذشته محاسبه می‌شن.</li>
       </ul>
     </div>
   </div>
@@ -2468,7 +2468,7 @@ function ckLevelForXp(xp){
   return level;
 }
 function ckRecalcLevel(c){
-  let remaining = Math.floor(c.coins), level = 1, need = ckLevelNeed(1), guard=0;
+  let remaining = Math.floor(c.xp), level = 1, need = ckLevelNeed(1), guard=0;
   while(remaining >= need && guard < 400){ remaining -= need; level++; need = ckLevelNeed(level); guard++; }
   c.level = level;
   return {into:remaining, need};
@@ -2585,7 +2585,7 @@ function renderClicker(){
   const claimedToday = c.lastDailyClaim === todayKey;
   const dayIdx = c.dailyStreak % 7;
   $("#ck-daily-desc").textContent = claimedToday
-    ? `امروز رو دریافت کردی — فردا دوباره سر بزن! (روز ${toFa((dayIdx===0?7:dayIdx))} از چرخه)`
+    ? `امروز رو دریافت کردی — فردا دوباره سر بزن! (روز ${toFa((dayIdx===0?7:dayIdx+1))} از چرخه)`
     : `روز ${toFa(dayIdx+1)} از چرخه ۷ روزه — پاداش امروز: ${toFa(CK_DAILY_REWARDS[dayIdx])} سکه`;
   $("#ck-daily-btn").disabled = claimedToday;
   $("#ck-daily-btn").textContent = claimedToday ? "✅ امروز دریافت شد" : `🎁 دریافت پاداش امروز (${toFa(CK_DAILY_REWARDS[dayIdx])})`;
@@ -2803,16 +2803,32 @@ setInterval(()=>{
   if(!profile.stats || !profile.stats.clicker) return;
   const c = ck();
   let changed = false;
+  const now = Date.now();
+
+  // energy: award regen based on real elapsed time, not an assumed 3s tick.
+  // (fixes energy falling behind when the tab is throttled/backgrounded or the device sleeps)
   const regenAmt = 1 + c.regenLevel;
-  if(c.energy < c.maxEnergy){ c.energy = Math.min(c.maxEnergy, c.energy + regenAmt); changed = true; }
-  c.lastEnergyTs = Date.now();
-  if(c.passiveIncome > 0){
-    const gain = c.passiveIncome/3600*3;
-    ckAddCoins(c, gain);
-    ckRolloverDay(c); c.coinsToday += gain;
-    changed = true;
+  const elapsedEnergySteps = Math.floor((now - c.lastEnergyTs) / 3000);
+  if(elapsedEnergySteps > 0){
+    if(c.energy < c.maxEnergy){
+      c.energy = Math.min(c.maxEnergy, c.energy + elapsedEnergySteps * regenAmt);
+      changed = true;
+    }
+    c.lastEnergyTs += elapsedEnergySteps * 3000;
   }
-  c.lastPassiveTs = Date.now();
+
+  // passive income: same fix — pay for the actual elapsed time (capped like offline progress)
+  if(c.passiveIncome > 0){
+    const elapsedMs = Math.min(now - c.lastPassiveTs, 3*3600*1000);
+    const gain = (elapsedMs/3600000) * c.passiveIncome;
+    if(gain > 0){
+      ckAddCoins(c, gain);
+      ckRolloverDay(c); c.coinsToday += gain;
+      changed = true;
+    }
+    c.lastPassiveTs = now;
+  }
+
   if(changed && $("#screen-clicker").classList.contains("active")){
     ckCheckAchievements(c);
     renderClicker();
