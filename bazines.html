@@ -71,6 +71,11 @@
   .theme-toggle{width:38px; height:38px; border-radius:10px; border:1px solid var(--line); background:var(--panel-2); color:var(--text); font-size:17px; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:.2s;}
   .theme-toggle:hover{border-color:var(--gold-dim); transform:translateY(-2px);}
   .theme-toggle:active{transform:translateY(0) scale(.92);}
+  .home-coin-badge{display:flex; align-items:center; gap:5px; height:38px; padding:0 12px; border-radius:10px; border:1px solid var(--gold-dim); background:var(--panel-2); flex-shrink:0;}
+  .home-coin-badge .coin-ic{font-size:16px; line-height:1;}
+  .home-coin-badge .coin-num{font-family:'Lalezar'; font-size:15px; color:var(--gold); line-height:1;}
+  @keyframes coinPop{0%{transform:scale(1);}40%{transform:scale(1.35);}100%{transform:scale(1);}}
+  .home-coin-badge.coin-pop{animation:coinPop .35s ease;}
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
   html,body{height:100%; touch-action:manipulation;}
   body{
@@ -157,6 +162,8 @@
   @keyframes popSel{0%{transform:scale(1);} 45%{transform:scale(1.18);} 100%{transform:scale(1);}}
   .avatar-opt.locked{opacity:.45; filter:grayscale(1);}
   .avatar-opt.locked::after{content:"🔒"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:16px; background:rgba(0,0,0,.35); border-radius:8px;}
+  .avatar-opt.coin-locked{opacity:.75; filter:grayscale(.35); border-color:var(--gold-dim);}
+  .avatar-opt.coin-locked::after{content:"🪙"; background:rgba(0,0,0,.2);}
   .avatar-opt .req-tag{position:absolute; bottom:-7px; left:50%; transform:translateX(-50%); font-size:8px; background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:1px 5px; color:var(--text-dim); white-space:nowrap;}
 
   /* ---- profile frames (PUBG / Free Fire style rings) ---- */
@@ -172,6 +179,8 @@
   .frame-opt.selected{ border-color:var(--gold); animation:popSel .3s cubic-bezier(.34,1.56,.64,1); }
   .frame-opt.locked{ opacity:.55; }
   .frame-opt.locked::after{ content:"🔒"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:15px; background:rgba(0,0,0,.35); border-radius:10px; }
+  .frame-opt.coin-locked{ opacity:.8; border-color:var(--gold-dim); }
+  .frame-opt.coin-locked::after{ content:"🪙"; background:rgba(0,0,0,.2); }
   .frame-opt .req-tag{ position:absolute; bottom:-7px; left:50%; transform:translateX(-50%); font-size:8px; background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:1px 5px; color:var(--text-dim); white-space:nowrap; z-index:2; }
 
   /* ---- level badge (Clash-of-Clans style diamond) ---- */
@@ -579,6 +588,7 @@
       </div>
     </div>
     <div class="row" style="gap:8px;">
+      <div class="home-coin-badge" id="home-coin-badge" title="موجودی سکه"><span class="coin-ic">🪙</span><span class="coin-num" id="home-coin-num">۰</span></div>
       <button class="theme-toggle" id="btn-theme-toggle" title="حالت تاریک/روشن">🌙</button>
       <button class="btn btn-ghost btn-sm" id="btn-logout">خروج</button>
     </div>
@@ -951,6 +961,7 @@
     <div style="margin:14px 0; text-align:right;">
       <input type="text" id="edit-name" maxlength="16">
     </div>
+    <p class="muted" style="font-size:12px; margin:-6px 0 10px; text-align:right;">تغییر اسم ۱۰۰ 🪙 هزینه داره؛ اسم قبلی آزاد می‌شه و دیگه نمی‌تونی باهاش وارد بشی.</p>
     <p class="muted" style="font-size:12px; margin:-6px 0 10px; text-align:right;">آواتارهای قفل‌شده با انجام ماموریت‌های داخل بازی باز می‌شوند.</p>
     <div class="avatar-grid" id="edit-avatar-grid"></div>
   </div>
@@ -982,11 +993,15 @@
     <h2 class="section-title">بروزرسانی‌ها</h2>
     <div style="font-size:13px; line-height:2;">
       <div class="pill" style="display:block; text-align:right; margin-bottom:8px; background:var(--panel-2);">
-        نسخه‌ی 1.1.2 — <span style="color:var(--gold);">1405/04/22</span> <span class="muted" style="font-size:11px;">(2026/7/13)</span>
+        نسخه‌ی 1.1.5 — <span style="color:var(--gold);">1405/04/23</span> <span class="muted" style="font-size:11px;">(2026/7/14)</span>
       </div>
       <ul style="margin:0; padding-inline-start:18px; margin-bottom:14px;">
-        <li>🐞 باگ بازی همستر رفع شد: سطح و لیگ بازیکن قبلاً بر اساس موجودی فعلی سکه محاسبه می‌شد و با هر خرید ارتقا از فروشگاه پایین می‌اومد؛ حالا سطح بر اساس مجموع سکه‌های به‌دست‌آمده محاسبه می‌شه و دیگه هیچ‌وقت کاهش پیدا نمی‌کنه. شماره‌ی روز در نوار پاداش روزانه هم درست شد.</li>
-        <li>🐞 باگ دیگه‌ای در بازی همستر رفع شد: شارژ انرژی و درآمد ساعتی هر ۳ ثانیه یک مقدار ثابت حساب می‌شد نه بر اساس زمان واقعی سپری‌شده؛ اگه تب پس‌زمینه/گوشی خواب می‌رفت، انرژی و موجودی سکه کمتر از حد واقعی افزایش پیدا می‌کرد. حالا هر دو بر اساس زمان واقعی گذشته محاسبه می‌شن.</li>
+        <li>🪙 اقتصاد سکه اضافه شد: حالا با هر بار برد، مساوی یا باخت تو بازی‌های مافیا، شطرنج و کوییز، سکه می‌گیری.</li>
+        <li>🪙 نشان موجودی سکه کنار دکمه‌ی حالت تاریک/روشن، تو صفحه‌ی اصلی اضافه شد و با هر پاداش، یه انیمیشن کوچیک نشون می‌ده.</li>
+        <li>🎭 ۵ آواتار جدید (ابرقهرمان، نابغه، پنگوئن باحال، گیمر حرفه‌ای، پیتزاخور) اضافه شد که به‌جای ماموریت، با سکه از تو صفحه‌ی ویرایش پروفایل خریداری می‌شن.</li>
+        <li>🖼️ ۳ قاب پروفایل خفن (نئونی، اُبسیدین، سلطنتی طلاکوب) اضافه شد که فقط با سکه قابل خریدن هستن — با نماد 🪙 روی آیتم‌های قفل‌شده مشخص می‌شن.</li>
+        <li>🐞 باگ تغییر اسم رفع شد: قبلاً بعد از عوض کردن اسم، اکانت با اسم قدیمی هم تو صفحه‌ی ورود باقی می‌موند؛ حالا اسم قبلی حذف می‌شه و فقط با اسم جدید می‌شه وارد شد.</li>
+        <li>🪙 تغییر اسم حالا ۱۰۰ سکه هزینه داره — از صفحه‌ی ویرایش پروفایل.</li>
       </ul>
     </div>
   </div>
@@ -1239,7 +1254,15 @@ const BONUS_AVATARS = [
   { emoji:"🍷",    label:"کلکسیونر شراب", req:{type:"trophies", count:1700}, reqText:"۱۷۰۰ کاپ" },
   { emoji:"⚰️",    label:"سایه‌ی مرگ",    req:{type:"trophies", count:2000}, reqText:"۲۰۰۰ کاپ" },
   { emoji:"🗝️",    label:"کلیددار اسرار", req:{type:"level",    count:25},   reqText:"سطح ۲۵" },
-  { emoji:"🚔",    label:"تحت تعقیب",     req:{type:"wins",     count:70},   reqText:"۷۰ برد" }
+  { emoji:"🚔",    label:"تحت تعقیب",     req:{type:"wins",     count:70},   reqText:"۷۰ برد" },
+
+  /* Coin-shop avatars: bought with coins earned from games instead of
+     mission requirements. Purchase is permanent once bought. */
+  { emoji:"🦸",    label:"ابرقهرمان",     req:{type:"coins", count:150},  reqText:"۱۵۰ 🪙" },
+  { emoji:"🧠",    label:"نابغه",         req:{type:"coins", count:200},  reqText:"۲۰۰ 🪙" },
+  { emoji:"🐧",    label:"پنگوئن باحال",  req:{type:"coins", count:120},  reqText:"۱۲۰ 🪙" },
+  { emoji:"🎮",    label:"گیمر حرفه‌ای",  req:{type:"coins", count:180},  reqText:"۱۸۰ 🪙" },
+  { emoji:"🍕",    label:"پیتزاخور",      req:{type:"coins", count:100},  reqText:"۱۰۰ 🪙" }
 ];
 /* Full emoji pool (starter + bonus) used only for assigning bot avatars —
    bots aren't subject to the unlock system, this is purely cosmetic variety. */
@@ -1275,7 +1298,13 @@ const FRAMES = [
   { key:"galaxy",    name:"قاب کهکشانی",      req:{type:"trophies", count:1600},reqText:"۱۶۰۰ کاپ",   grad:"conic-gradient(from 90deg,#5ec8ff,#c58bff,#ff6b81,#5ec8ff)", spin:true },
   { key:"phoenix",   name:"قاب ققنوس",        req:{type:"wins",     count:60},  reqText:"۶۰ برد",     grad:"conic-gradient(from 0deg,#ffdf7a,#ff6b3d,#b3172c,#ffdf7a)", spin:true },
   { key:"rainbow",   name:"قاب رنگین‌کمانی",  req:{type:"level",    count:20},  reqText:"سطح ۲۰",     grad:"conic-gradient(#ff6b6b,#ffd93d,#6bff8e,#5ec8ff,#c58bff,#ff6b6b)", spin:true },
-  { key:"legend",    name:"قاب افسانه‌ای",    req:{type:"trophies", count:2200},reqText:"۲۲۰۰ کاپ",   grad:"conic-gradient(from 45deg,#fff3c4,#c9a24b,#7a611f,#fff3c4)", spin:true }
+  { key:"legend",    name:"قاب افسانه‌ای",    req:{type:"trophies", count:2200},reqText:"۲۲۰۰ کاپ",   grad:"conic-gradient(from 45deg,#fff3c4,#c9a24b,#7a611f,#fff3c4)", spin:true },
+
+  /* Coin-shop frames: premium, bought outright with coins instead of
+     earned through mission requirements. Purchase is permanent. */
+  { key:"neon",      name:"قاب نئونی",        req:{type:"coins", count:300}, reqText:"۳۰۰ 🪙", grad:"conic-gradient(from 0deg,#ff2fd1,#2fd1ff,#d1ff2f,#ff2fd1)", spin:true },
+  { key:"obsidian",  name:"قاب اُبسیدین",     req:{type:"coins", count:400}, reqText:"۴۰۰ 🪙", grad:"linear-gradient(135deg,#eee,#3d3d3d 40%,#0a0a0a)", spin:false },
+  { key:"royal",     name:"قاب سلطنتی طلاکوب", req:{type:"coins", count:500}, reqText:"۵۰۰ 🪙", grad:"conic-gradient(from 30deg,#fff3c4,#ff3d3d,#c9a24b,#fff3c4)", spin:true }
 ];
 function isFrameUnlocked(fr){
   if(!fr.req) return true;
@@ -1286,6 +1315,7 @@ function isFrameUnlocked(fr){
     case "games": return s.games >= fr.req.count;
     case "level": return lvl >= fr.req.count;
     case "trophies": return Math.max(s.trophies||0, s.maxTrophies||0) >= fr.req.count;
+    case "coins": return (s.purchasedFrames||[]).includes(fr.key);
     default: return false;
   }
 }
@@ -1307,6 +1337,7 @@ function isBonusAvatarUnlocked(av){
     case "games": return s.games >= av.req.count;
     case "level": return lvl >= av.req.count;
     case "trophies": return Math.max(s.trophies||0, s.maxTrophies||0) >= av.req.count;
+    case "coins": return (s.purchasedAvatars||[]).includes(av.emoji);
     default: return false;
   }
 }
@@ -1456,7 +1487,7 @@ let profile = {
   name: "",
   avatar: "🕵️",
   frame: "basic",
-  stats: { games:0, wins:0, losses:0, xp:0, trophies:0, maxTrophies:0, quizBest:0, quizStage:0, starredGames:{mafia:false,quiz:false,chess:false,clicker:false} },
+  stats: { games:0, wins:0, losses:0, xp:0, coins:0, purchasedAvatars:[], purchasedFrames:[], trophies:0, maxTrophies:0, quizBest:0, quizStage:0, starredGames:{mafia:false,quiz:false,chess:false,clicker:false} },
   history: []
 };
 let selectedAuthAvatar = AVATARS[0];
@@ -1560,14 +1591,33 @@ function buildAvatarGrid(container, onPick, current, includeBonus){
     BONUS_AVATARS.forEach(bav=>{
       const unlocked = isBonusAvatarUnlocked(bav);
       const d = document.createElement("div");
-      d.className = "avatar-opt" + (bav.emoji===current ? " selected":"") + (unlocked ? "" : " locked");
+      d.className = "avatar-opt" + (bav.emoji===current ? " selected":"") + (unlocked ? "" : " locked" + (bav.req.type==="coins" ? " coin-locked":""));
       d.textContent = bav.emoji;
       if(!unlocked){
         const tag = document.createElement("span");
         tag.className = "req-tag";
         tag.textContent = bav.reqText;
         d.appendChild(tag);
-        d.addEventListener("click", ()=>{ alert(`این آواتار قفله! برای باز کردنش باید ماموریت «${bav.label} — ${bav.reqText}» رو کامل کنی.`); });
+        if(bav.req.type === "coins"){
+          d.title = "بزن تا با سکه بخریش";
+          d.addEventListener("click", ()=>{
+            const cost = bav.req.count;
+            const balance = Math.floor(profile.stats.coins||0);
+            if(balance < cost){
+              alert(`سکه‌ی کافی نداری! این آواتار ${toFa(cost)} 🪙 لازم داره — تو الان ${toFa(balance)} 🪙 داری.`);
+              return;
+            }
+            if(!confirm(`این آواتار رو با ${toFa(cost)} 🪙 بخرم؟`)) return;
+            profile.stats.coins = balance - cost;
+            profile.stats.purchasedAvatars = profile.stats.purchasedAvatars || [];
+            profile.stats.purchasedAvatars.push(bav.emoji);
+            updateHomeCoinBadge(true);
+            saveAccount();
+            buildAvatarGrid(container, onPick, current, includeBonus);
+          });
+        } else {
+          d.addEventListener("click", ()=>{ alert(`این آواتار قفله! برای باز کردنش باید ماموریت «${bav.label} — ${bav.reqText}» رو کامل کنی.`); });
+        }
       } else {
         d.addEventListener("click", ()=>{
           container.querySelectorAll(".avatar-opt").forEach(x=>x.classList.remove("selected"));
@@ -1584,14 +1634,33 @@ function buildFrameGrid(container, onPick, current){
   FRAMES.forEach(fr=>{
     const unlocked = isFrameUnlocked(fr);
     const d = document.createElement("div");
-    d.className = "frame-opt" + (fr.key===current ? " selected":"") + (unlocked ? "" : " locked");
+    d.className = "frame-opt" + (fr.key===current ? " selected":"") + (unlocked ? "" : " locked" + (fr.req && fr.req.type==="coins" ? " coin-locked":""));
     renderFramedAvatar(d, profile.avatar, fr.key, 46);
     if(!unlocked){
       const tag = document.createElement("span");
       tag.className = "req-tag";
       tag.textContent = fr.reqText;
       d.appendChild(tag);
-      d.addEventListener("click", ()=>{ alert(`این قاب قفله! برای باز کردنش باید «${fr.reqText}» رو داشته باشی.`); });
+      if(fr.req && fr.req.type === "coins"){
+        d.title = "بزن تا با سکه بخریش";
+        d.addEventListener("click", ()=>{
+          const cost = fr.req.count;
+          const balance = Math.floor(profile.stats.coins||0);
+          if(balance < cost){
+            alert(`سکه‌ی کافی نداری! این قاب ${toFa(cost)} 🪙 لازم داره — تو الان ${toFa(balance)} 🪙 داری.`);
+            return;
+          }
+          if(!confirm(`این قاب رو با ${toFa(cost)} 🪙 بخرم؟`)) return;
+          profile.stats.coins = balance - cost;
+          profile.stats.purchasedFrames = profile.stats.purchasedFrames || [];
+          profile.stats.purchasedFrames.push(fr.key);
+          updateHomeCoinBadge(true);
+          saveAccount();
+          buildFrameGrid(container, onPick, current);
+        });
+      } else {
+        d.addEventListener("click", ()=>{ alert(`این قاب قفله! برای باز کردنش باید «${fr.reqText}» رو داشته باشی.`); });
+      }
     } else {
       d.addEventListener("click", ()=>{
         container.querySelectorAll(".frame-opt").forEach(x=>x.classList.remove("selected"));
@@ -1627,11 +1696,16 @@ $("#btn-enter").addEventListener("click", ()=>{
     if(profile.stats && profile.stats.maxTrophies === undefined){
       profile.stats.maxTrophies = profile.stats.trophies || 0;
     }
+    if(profile.stats){
+      if(profile.stats.coins === undefined) profile.stats.coins = 0;
+      if(!profile.stats.purchasedAvatars) profile.stats.purchasedAvatars = [];
+      if(!profile.stats.purchasedFrames) profile.stats.purchasedFrames = [];
+    }
   } else {
     profile.name = name;
     profile.avatar = selectedAuthAvatar;
     profile.frame = "basic";
-    profile.stats = { games:0, wins:0, losses:0, xp:0, trophies:0, maxTrophies:0, quizBest:0, quizStage:0, starredGames:{mafia:false,quiz:false,chess:false,clicker:false} };
+    profile.stats = { games:0, wins:0, losses:0, xp:0, coins:0, purchasedAvatars:[], purchasedFrames:[], trophies:0, maxTrophies:0, quizBest:0, quizStage:0, starredGames:{mafia:false,quiz:false,chess:false,clicker:false} };
     profile.history = [];
     saveAccount();
   }
@@ -1642,7 +1716,7 @@ $("#btn-enter").addEventListener("click", ()=>{
 $("#btn-logout").addEventListener("click", ()=>{
   saveAccount();
   setCurrentUser(null);
-  profile = { name:"", avatar: AVATARS[0], frame:"basic", stats:{games:0,wins:0,losses:0,xp:0,trophies:0,maxTrophies:0,quizBest:0,quizStage:0,starredGames:{mafia:false,quiz:false,chess:false,clicker:false}}, history:[] };
+  profile = { name:"", avatar: AVATARS[0], frame:"basic", stats:{games:0,wins:0,losses:0,xp:0,coins:0,purchasedAvatars:[],purchasedFrames:[],trophies:0,maxTrophies:0,quizBest:0,quizStage:0,starredGames:{mafia:false,quiz:false,chess:false,clicker:false}}, history:[] };
   lobbyFriends = [];
   $("#input-name").value = "";
   $("#auth-msg").textContent = "";
@@ -1658,6 +1732,28 @@ function renderHome(){
   $("#home-name").textContent = profile.name;
   const lvl = levelFromXp(profile.stats.xp);
   $("#home-level-num").textContent = String(lvl);
+  updateHomeCoinBadge();
+}
+/* Refreshes the coin badge on the home topbar. Pass `true` after a game
+   reward so the badge pops to draw attention to the change. */
+function updateHomeCoinBadge(animate){
+  const el = $("#home-coin-num");
+  if(!el) return;
+  el.textContent = toFa(Math.floor(profile.stats.coins||0));
+  if(animate){
+    const badge = $("#home-coin-badge");
+    if(badge){
+      badge.classList.remove("coin-pop");
+      void badge.offsetWidth;
+      badge.classList.add("coin-pop");
+    }
+  }
+}
+/* Awards coins for a game outcome and persists + refreshes the home badge.
+   Used by mafia / quiz / chess end-of-game flows. */
+function awardCoins(amount){
+  profile.stats.coins = Math.max(0, (profile.stats.coins||0) + amount);
+  updateHomeCoinBadge(true);
 }
 $("#tile-play").addEventListener("click", ()=>{ renderGamesHub(); goScreen("games"); });
 $("#tile-game-mafia").addEventListener("click", ()=>{ renderSetup(); goScreen("setup"); });
@@ -1691,13 +1787,39 @@ $("#tile-settings").addEventListener("click", ()=>{
   goScreen("settings");
 });
 $("#tile-app-settings").addEventListener("click", ()=> goScreen("app-settings"));
+const NAME_CHANGE_COST = 100;
 $("#btn-save-profile").addEventListener("click", ()=>{
   const name = $("#edit-name").value.trim();
   if(!name) return;
+
+  const oldName = profile.name;
+  const nameChanged = name !== oldName;
+
+  if(nameChanged){
+    if(accounts[name] && name !== oldName){
+      alert("این اسم قبلاً توسط یه اکانت دیگه گرفته شده — یه اسم دیگه انتخاب کن.");
+      return;
+    }
+    const balance = Math.floor(profile.stats.coins||0);
+    if(balance < NAME_CHANGE_COST){
+      alert(`تغییر اسم ${toFa(NAME_CHANGE_COST)} 🪙 لازم داره — تو الان ${toFa(balance)} 🪙 داری.`);
+      return;
+    }
+    if(!confirm(`تغییر اسم از «${oldName}» به «${name}» ${toFa(NAME_CHANGE_COST)} 🪙 هزینه داره. مطمئنی؟`)) return;
+    profile.stats.coins = balance - NAME_CHANGE_COST;
+  }
+
   profile.name = name;
   profile.avatar = selectedEditAvatar;
   profile.frame = selectedEditFrame;
+
+  if(nameChanged && oldName){
+    delete accounts[oldName];
+    setCurrentUser(name);
+  }
+
   saveAccount();
+  updateHomeCoinBadge(nameChanged);
   renderHome();
   goScreen("home");
 });
@@ -2301,6 +2423,9 @@ function endGame(townWon, winningTeamLabel){
   profile.stats.trophies = Math.max(0, oldTrophies + trophyChange);
   profile.stats.maxTrophies = Math.max(profile.stats.maxTrophies||0, profile.stats.trophies);
 
+  const coinGain = youWon ? 25 : 10;
+  awardCoins(coinGain);
+
   profile.history.push({ result: youWon ? 'win':'lose', round: game.round, roleName: ROLES[you.role].name });
 
   const newLevel = levelFromXp(profile.stats.xp);
@@ -2309,7 +2434,7 @@ function endGame(townWon, winningTeamLabel){
   $("#end-title").textContent = youWon ? "🏆 پیروزی!" : "💀 شکست";
   $("#end-title").className = "result-title " + (youWon ? "result-win":"result-lose");
   const trophyText = trophyChange >= 0 ? `+${toFa(trophyChange)} کاپ` : `${toFa(trophyChange)} کاپ`;
-  $("#end-sub").textContent = `تیم ${winningTeamLabel} برنده‌ی این دور شد. (+${toFa(xpGain)} امتیاز تجربه، ${trophyText})`;
+  $("#end-sub").textContent = `تیم ${winningTeamLabel} برنده‌ی این دور شد. (+${toFa(xpGain)} امتیاز تجربه، ${trophyText}، +${toFa(coinGain)} 🪙)`;
 
   const rl = $("#reveal-list");
   rl.innerHTML = "";
@@ -2468,7 +2593,7 @@ function ckLevelForXp(xp){
   return level;
 }
 function ckRecalcLevel(c){
-  let remaining = Math.floor(c.xp), level = 1, need = ckLevelNeed(1), guard=0;
+  let remaining = Math.floor(c.coins), level = 1, need = ckLevelNeed(1), guard=0;
   while(remaining >= need && guard < 400){ remaining -= need; level++; need = ckLevelNeed(level); guard++; }
   c.level = level;
   return {into:remaining, need};
@@ -3162,6 +3287,7 @@ function finishQuiz(completedAll){
   const total = QUIZ_QUESTIONS.length;
   profile.stats.quizBest = Math.max(profile.stats.quizBest||0, quizState.correct);
   if(completedAll) profile.stats.quizStage = total; // تکمیل‌شده می‌مونه — هیچ‌وقت خودکار از اول شروع نمی‌شه
+  awardCoins(completedAll ? 25 : 10);
   saveAccount();
 
   const body = $("#quiz-body");
@@ -3863,19 +3989,20 @@ function finishChessGame(winnerColor){
   const oldTier = rankFromTrophies(oldTrophies);
 
   profile.stats.games += 1;
-  let xpGain, trophyChange, resultKey;
+  let xpGain, trophyChange, resultKey, coinGain;
   if(draw){
-    xpGain = 20; trophyChange = 0; resultKey = "draw";
+    xpGain = 20; trophyChange = 0; resultKey = "draw"; coinGain = 15;
   } else if(youWon){
     profile.stats.wins += 1;
-    xpGain = 35; trophyChange = 20; resultKey = "win";
+    xpGain = 35; trophyChange = 20; resultKey = "win"; coinGain = 25;
   } else {
     profile.stats.losses += 1;
-    xpGain = 12; trophyChange = -10; resultKey = "lose";
+    xpGain = 12; trophyChange = -10; resultKey = "lose"; coinGain = 10;
   }
   profile.stats.xp += xpGain;
   profile.stats.trophies = Math.max(0, oldTrophies + trophyChange);
   profile.stats.maxTrophies = Math.max(profile.stats.maxTrophies||0, profile.stats.trophies);
+  awardCoins(coinGain);
   profile.history.push({ result: resultKey, round: 1, roleName: "شطرنج" });
 
   const newLevel = levelFromXp(profile.stats.xp);
@@ -3888,10 +4015,10 @@ function finishChessGame(winnerColor){
   $("#chess-result-title").className = "result-title " + (draw ? "" : (youWon ? "result-win":"result-lose"));
   const trophyText = trophyChange>=0 ? `+${toFa(trophyChange)} کاپ` : `${toFa(trophyChange)} کاپ`;
   $("#chess-result-sub").textContent = draw
-    ? `بازی مساوی تموم شد. (+${toFa(xpGain)} امتیاز تجربه، ${trophyText})`
+    ? `بازی مساوی تموم شد. (+${toFa(xpGain)} امتیاز تجربه، ${trophyText}، +${toFa(coinGain)} 🪙)`
     : (youWon
-      ? `تو ${botName} رو مات کردی! (+${toFa(xpGain)} امتیاز تجربه، ${trophyText})`
-      : `${botName} تو رو مات کرد. (+${toFa(xpGain)} امتیاز تجربه، ${trophyText})`);
+      ? `تو ${botName} رو مات کردی! (+${toFa(xpGain)} امتیاز تجربه، ${trophyText}، +${toFa(coinGain)} 🪙)`
+      : `${botName} تو رو مات کرد. (+${toFa(xpGain)} امتیاز تجربه، ${trophyText}، +${toFa(coinGain)} 🪙)`);
 
   const modalQueue = [];
   if(newLevel > oldLevel) modalQueue.push(()=>showLevelUpModal(newLevel));
@@ -4001,6 +4128,11 @@ renderSetup();
     if(!profile.frame) profile.frame = "basic";
     if(profile.stats && profile.stats.maxTrophies === undefined){
       profile.stats.maxTrophies = profile.stats.trophies || 0;
+    }
+    if(profile.stats){
+      if(profile.stats.coins === undefined) profile.stats.coins = 0;
+      if(!profile.stats.purchasedAvatars) profile.stats.purchasedAvatars = [];
+      if(!profile.stats.purchasedFrames) profile.stats.purchasedFrames = [];
     }
     renderHome();
     goScreen("home");
